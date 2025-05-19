@@ -8,16 +8,38 @@ h1 {
     font-size: 5rem;
 }
 
-header {
-    text-align: center;
-}
-
 header h1 {
-    height: 100%;
+    padding-top: 25vh;
     color: rgb(33, 115, 173);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -1rem;
+}
+
+a.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: rgb(33, 115, 173);
+    text-decoration: none;
+}
+
+a.button:hover {
+    background-color: rgb(25, 87, 131);
+}
+
+a.button:active {
+    background-color: rgb(16, 54, 79);
 }
 
 /* Navigation */
