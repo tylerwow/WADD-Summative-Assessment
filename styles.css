@@ -9,7 +9,8 @@ h1 {
 }
 
 header h1 {
-    padding-top: 25vh;
+    padding-top: 30vh;
+    margin: 0;
     color: rgb(33, 115, 173);
     display: flex;
     justify-content: center;
@@ -20,7 +21,7 @@ header h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -1rem;
+    margin: 1rem;
 }
 
 a.button {
@@ -49,11 +50,16 @@ nav {
     width: 100%;
 }
 
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: flex-end;
     list-style: none;
 }
 
