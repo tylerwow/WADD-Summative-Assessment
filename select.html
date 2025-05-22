@@ -21,12 +21,12 @@
         </nav>
         <form>
             <div>
-                <label for="name">Name:</label>
-                <input id="name" name="name" type="text" placeholder="Your name" required>
+                <label for="form-name">Name:</label>
+                <input id="form-name" name="name" type="text" placeholder="Your name">
             </div>
             <div>
-                <label for="category">Select Category:</label>
-                <select id="category" name="category">
+                <label for="form-category">Select Category:</label>
+                <select id="form-category" name="category">
                     <option value="">Any Category</option>
                     <option value="9">General Knowledge</option>
                     <option value="10">Entertainment: Books</option>
@@ -56,17 +56,17 @@
             </div>
             <fieldset>
                 <legend>Select Difficulty:</legend>
-                <input id="easy" name="difficulty" type="radio" value="easy">
-                <label for="easy">Easy</label>
-                <input id="medium" name="difficulty" type="radio" value="medium" checked>
-                <label for="medium">Medium</label>
-                <input id="hard" name="difficulty" type="radio" value="hard">
-                <label for="hard">Hard</label>
+                <input id="form-radio-easy" name="difficulty" type="radio" value="easy">
+                <label for="form-radio-easy">Easy</label>
+                <input id="form-radio-medium" name="difficulty" type="radio" value="medium" checked>
+                <label for="form-radio-medium">Medium</label>
+                <input id="form-radio-hard" name="difficulty" type="radio" value="hard">
+                <label for="form-radio-hard">Hard</label>
             </fieldset>
             <div>
-                <input type="submit" value="Play">
+                <input id="form-submit-btn" type="button" value="Play">
             </div>
         </form>
-        <script src="main.js"></script>
+        <script src="select.js"></script>
     </body>
 </html>
