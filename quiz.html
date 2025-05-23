@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Quiz - QuizMyBrain 🧠</title>
-
+        <link href="Font Awesome/css/all.css" type="text/css" rel="stylesheet">
         <link href="styles.css" type="text/css" rel="stylesheet">
     </head>
     <body>
@@ -15,17 +15,30 @@
                 <ul class="end">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="select.html">Quiz</a></li>
-                    <li><a href="statistics.html">Statistics</a></li>
+                    <li><a href="scores.html">Scores</a></li>
                 </ul>
             </div>
         </nav>
-        <main>
-            <p id="score">0</p>
+        <div id="loading">
+            <i class="fa-solid fa-spinner spinner" role="status"></i>
+            <p id="loading-msg"></p>
+        </div>
+        <main id="content" class="quiz">
+            <header>
+                <h2 id="score">0</h2>
+            </header>
             <p id="question">Question 1: Lorem Ipsum</p>
-            <input id="answerBtn1" type="button" value="Answer 1">
-            <input id="answerBtn2" type="button" value="Answer 2">
-            <input id="answerBtn3" type="button" value="Answer 3">
-            <input id="answerBtn4" type="button" value="Answer 4">
+            <div class="quiz-button-container">
+                <input class="quiz-button" id="answer-btn-1" type="button" value="Answer 1">
+                <input class="quiz-button" id="answer-btn-2" type="button" value="Answer 2">
+                <input class="quiz-button" id="answer-btn-3" type="button" value="Answer 3">
+                <input class="quiz-button" id="answer-btn-4" type="button" value="Answer 4">
+            </div>
+            <div id="quiz-heart-container">
+                <i class="fa-solid fa-heart quiz-heart" id="heart-1"></i>
+                <i class="fa-solid fa-heart quiz-heart" id="heart-2"></i>
+                <i class="fa-solid fa-heart quiz-heart" id="heart-3"></i>
+            </div>
         </main>
         <script src="quiz.js"></script>
     </body>
