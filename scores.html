@@ -19,6 +19,31 @@
                 </ul>
             </div>
         </nav>
-        <script src="main.js"></script>
+        <main>
+            <header>
+                <h2>Scores</h2>
+            </header>
+            <div id="data" class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Difficulty</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scores">
+                    </tbody>
+                </table>
+            </div>
+            <div id="missing-data">
+                <p id="missing-data-message">There are currently no scores to show right now.</p>
+                <div class="button-container">
+                    <a href="select.html" class="button">Select a Quiz</a>
+                </div>
+            </div>
+        </main>
+        <script src="scores.js"></script>
     </body>
 </html>

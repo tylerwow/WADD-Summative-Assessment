@@ -1,4 +1,6 @@
 body {
+    background-color: rgb(27, 27, 27);
+    color: rgb(248, 248, 248);
     margin: 0;
     padding: 0;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -6,7 +8,7 @@ body {
 
 header h1 {
     margin: 0;
-    color: rgb(33, 115, 173);
+    color: rgb(248, 248, 248);
     text-align: center;
     display: flex;
     justify-content: center;
@@ -17,20 +19,21 @@ header h1 {
 
 header h2 {
     margin: 0;
-    color: rgb(33, 115, 173);
+    color: rgb(248, 248, 248);
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 4rem;
     padding-top: 15vh;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
+
 
 form {
     display: inline-block;
     width: 25%;
-    margin-top: 2rem;
+    margin-top: 1rem;
     text-align: left;
     margin-left: 37%;
 }
@@ -42,7 +45,7 @@ form {
 }
 
 #form-name-error {
-    color: red;
+    color: rgb(187, 0, 0);
 }
 
 fieldset {
@@ -57,23 +60,37 @@ label {
 }
 
 input {
+    border: 0;
+    background-color: rgb(18, 18, 18);
+    color: rgb(248, 248, 248);
     height: 2rem;
 }
 
 select {
+    border: 0;
+    background-color: rgb(18, 18, 18);
+    color: rgb(248, 248, 248);
     height: 2rem;
 }
 
-fieldset input {
+.field-set {
+    display: flex;
+    justify-content: center;
+}
+
+.field-set input {
+    vertical-align: top;
     height: 1rem;
     margin-left: 1rem;
     margin-right: .5rem;
     margin-bottom: .5rem;
+    accent-color: rgb(18, 18, 18);
+    margin-bottom: 1rem;
 }
 
-fieldset legend {
+legend {
     text-align: left;
-    margin-bottom: .5rem;
+    margin-bottom: 1rem;
 }
 
 .button-container {
@@ -102,9 +119,10 @@ fieldset legend {
     align-items: center;
     padding: 8px 20px;
     border-radius: 10px;
-    color: white;
-    background-color: rgb(33, 115, 173);
+    color: rgb(248, 248, 248);
+    background-color: rgb(18, 18, 18);
     text-decoration: none;
+    height: 3rem;
 }
 
 .quiz-button {
@@ -115,8 +133,8 @@ fieldset legend {
     align-items: center;
     padding: 8px 20px;
     border-radius: 10px;
-    color: white;
-    background-color: rgb(33, 115, 173);
+    color: rgb(248, 248, 248);
+    background-color: rgb(18, 18, 18);
     text-decoration: none;
     height: 4rem;
     margin: .5rem;
@@ -124,20 +142,20 @@ fieldset legend {
 
 .button:hover {
     cursor: pointer;
-    background-color: rgb(25, 87, 131);
+    background-color: rgb(23, 23, 23);
 }
 
 .button:active {
-    background-color: rgb(16, 54, 79);
+    background-color: rgb(33, 33, 33);
 }
 
 .quiz-button:hover {
     cursor: pointer;
-    background-color: rgb(25, 87, 131);
+    background-color: rgb(23, 23, 23);
 }
 
 .quiz-button:active {
-    background-color: rgb(16, 54, 79);
+    background-color: rgb(33, 33, 33);
 }
 
 #content {
@@ -150,7 +168,7 @@ i.quiz-heart {
     display: inline-block;
     font-size: 3rem;
     margin: 1rem;
-    color: red;
+    color: rgb(187, 0, 0);
 }
 
 #loading {
@@ -163,16 +181,55 @@ i.quiz-heart {
     height: 90vh;
 }
 
+#end {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+#end h2 {
+    padding-top: 25vh;
+}
+
+#end .quiz-button-container {
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
 .spinner {
-    color: rgb(25, 87, 131);
+    color: rgb(187, 0, 0);
     font-size: 2rem;
     animation: spin 0.75s infinite linear;
 }
 
+#data {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+table {
+    min-width: 50vw;
+    padding-bottom: 5rem;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: center;
+}
+
+th {
+    border-bottom: solid 2px;
+}
+
+#missing-data-message {
+    text-align: center;
+}
+
 /* Navigation */
 nav {
-    background-color: rgb(33, 115, 173);
-    color: white;
+    background-color: rgb(18, 18, 18);
+    color: rgb(248, 248, 248);
     width: 100%;
 }
 
@@ -195,13 +252,14 @@ nav li {
 }
 
 nav li a {
+    font-size: 1.1rem;
     text-decoration: none;
-    color: white;
+    color: rgb(248, 248, 248);
     text-align: right;
 }
 
 nav li a:hover {
-    text-decoration: underline;
+    color: rgb(187, 0, 0);
 }
 
 @keyframes spin {
@@ -210,5 +268,33 @@ nav li a:hover {
     }
     to {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes breakHeart {
+    0% {
+        transform: rotate(0deg);
+        transform: scale(1);
+    }
+    10% {
+        transform: rotate(-10deg);
+    }
+    20% {
+        transform: rotate(10deg);
+    }
+    30% {
+        transform: rotate(-10deg);
+    }
+    40% {
+        transform: rotate(10deg);
+    }
+    50% {
+        transform: rotate(0deg);
+        transform: scale(1.5);
+        opacity: 100;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
     }
 }

@@ -31,3 +31,16 @@ function saveFormData() {
 
 const formSubmitBtn = document.getElementById("form-submit-btn");
 formSubmitBtn.addEventListener("click", saveFormData);
+
+/*
+This event listener is based on the example code
+Location: https://www.shecodes.io/athena/8493-how-to-submit-a-form-by-pressing-enter-in-javascript
+Accessed: 24/05/2025
+*/
+const form = document.getElementById('form');
+form.addEventListener('keypress', function (event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    saveFormData();
+  }
+});

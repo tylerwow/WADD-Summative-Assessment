@@ -10,6 +10,8 @@ let questionNum = 1;
 let score = 0;
 let lives = 3;
 
+let hasAnswered = false;
+
 let category = sessionStorage.getItem("quizCategory");
 let difficulty = sessionStorage.getItem("quizDifficulty");
 
@@ -20,11 +22,18 @@ const answerBtn2 = document.getElementById("answer-btn-2");
 const answerBtn3 = document.getElementById("answer-btn-3");
 const answerBtn4 = document.getElementById("answer-btn-4");
 
+const retryBtn = document.getElementById("retry-btn");
+const nextBtn = document.getElementById("next-btn");
+
+const finalScoreOutput = document.getElementById("final-score")
+
 const heart1 = document.getElementById("heart-1");
 const heart2 = document.getElementById("heart-2");
 const heart3 = document.getElementById("heart-3");
 
 const loadingMsg = document.getElementById("loading-msg");
+
+document.getElementById("end").style.display = "none";
 
 function generateApiUrl(category, difficulty) {
     return apiUrl = "https://opentdb.com/api.php?amount=10&category=" + category + "&difficulty="+ difficulty + "&type=multiple";
@@ -39,7 +48,7 @@ function callApi() {
             if (result.status == 429) {
                 setTimeout(() => {
                     callApi();
-                }, 5000)
+                }, 5000);
             }
             else {
                 return result.json();
@@ -61,11 +70,11 @@ function callApi() {
 function updateQuestion(data) {
     answers = [];
 
-    question = data.results[questionNum -1].question;
-    correctAnswer = data.results[questionNum -1].correct_answer;
-    incorrectAnswer1 = data.results[questionNum -1].incorrect_answers[0];
-    incorrectAnswer2 = data.results[questionNum -1].incorrect_answers[1];
-    incorrectAnswer3 = data.results[questionNum -1].incorrect_answers[2];
+    question = decodeHtml(data.results[questionNum -1].question);
+    correctAnswer = decodeHtml(data.results[questionNum -1].correct_answer);
+    incorrectAnswer1 = decodeHtml(data.results[questionNum -1].incorrect_answers[0]);
+    incorrectAnswer2 = decodeHtml(data.results[questionNum -1].incorrect_answers[1]);
+    incorrectAnswer3 = decodeHtml(data.results[questionNum -1].incorrect_answers[2]);
     answers.push(correctAnswer, incorrectAnswer1, incorrectAnswer2, incorrectAnswer3);
 }
 
@@ -101,11 +110,11 @@ function decodeHtml(html) {
 
 function updateOutput() {
     scoreOutput.innerHTML = score;
-    questionOutput.innerHTML = decodeHtml(question);
-    answerBtn1.value = decodeHtml(answers[0]);
-    answerBtn2.value = decodeHtml(answers[1]);
-    answerBtn3.value = decodeHtml(answers[2]);
-    answerBtn4.value = decodeHtml(answers[3]);
+    questionOutput.innerHTML = question;
+    answerBtn1.value = answers[0];
+    answerBtn2.value = answers[1];
+    answerBtn3.value = answers[2];
+    answerBtn4.value = answers[3];
 
     if (lives === 2) {
         heart3.style.visibility = "hidden";
@@ -131,21 +140,71 @@ function refreshQuestion() {
 }
 
 function checkAnswer(button) {
-    if (button.value == correctAnswer) {
-        console.log("correct");
-        score += 1;
-    }
-    else {
-        console.log("incorrect");
-        lives -= 1;
-    }
 
-    if (lives !== 0) {
-        questionNum += 1;
-        refreshQuestion();
-    }
-    else {
-        saveScore();
+    if (!hasAnswered) {
+        hasAnswered = true;
+
+        if (button.value == correctAnswer) {
+            score += 1;
+            button.style.backgroundColor = "rgb(8, 116, 0)";
+        }
+        else {
+            button.style.backgroundColor = "rgb(187, 0, 0)";
+            console.log("incorrect");
+            lives -= 1;
+
+            if (answerBtn1.value == correctAnswer) {
+                answerBtn1.style.backgroundColor = "rgb(8, 116, 0)";
+            }
+            else if (answerBtn2.value == correctAnswer) {
+                answerBtn2.style.backgroundColor = "rgb(8, 116, 0)";
+            }
+            else if (answerBtn3.value == correctAnswer) {
+                answerBtn3.style.backgroundColor = "rgb(8, 116, 0)";
+            }
+            else if (answerBtn4.value == correctAnswer) {
+                answerBtn4.style.backgroundColor = "rgb(8, 116, 0)";
+            }
+
+            if (lives === 2) {
+                heart3.style.animation = "breakHeart 2.6s";
+
+                setTimeout(() => {
+                    heart3.className = "fa-solid fa-heart-crack quiz-heart";
+                }, 1000);
+            }  
+            if (lives === 1 ) {
+                heart2.style.animation = "breakHeart 2.6s";
+
+                setTimeout(() => {
+                    heart2.className = "fa-solid fa-heart-crack quiz-heart";
+                }, 1000);
+            }
+            if (lives === 0) {
+                heart1.style.animation = "breakHeart 2.6s";
+
+                setTimeout(() => {
+                    heart1.className = "fa-solid fa-heart-crack quiz-heart";
+                }, 1000);
+            }
+        }
+
+        setTimeout(() => {
+            answerBtn1.style.backgroundColor = "";
+            answerBtn2.style.backgroundColor = "";
+            answerBtn3.style.backgroundColor = "";
+            answerBtn4.style.backgroundColor = "";
+
+            if (lives !== 0) {
+                questionNum += 1;
+                refreshQuestion();
+            }
+            else {
+                saveScore();
+            }
+
+            hasAnswered = false;
+        }, 2500);
     }
 }
 
@@ -160,10 +219,21 @@ function saveScore() {
         category: category,
         difficulty: difficulty,
         score: score
-    })
+    });
 
     localStorage.setItem("quizScores", JSON.stringify(scoreLog));
 
+    finalScoreOutput.innerHTML = score;
+
+    document.getElementById("end").style.display = "inline-block";
+    document.getElementById("content").style.display = "none";
+}
+
+function refreshPage() {
+    location.href = "quiz.html";
+}
+
+function nextPage() {
     location.href = "scores.html";
 }
 
@@ -173,3 +243,7 @@ answerBtn1.addEventListener("click", () => checkAnswer(answerBtn1));
 answerBtn2.addEventListener("click", () => checkAnswer(answerBtn2));
 answerBtn3.addEventListener("click", () => checkAnswer(answerBtn3));
 answerBtn4.addEventListener("click", () => checkAnswer(answerBtn4));
+
+retryBtn.addEventListener("click", refreshPage);
+
+nextBtn.addEventListener("click", nextPage);

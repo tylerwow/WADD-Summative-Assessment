@@ -23,21 +23,33 @@
             <i class="fa-solid fa-spinner spinner" role="status"></i>
             <p id="loading-msg"></p>
         </div>
-        <main id="content" class="quiz">
-            <header>
-                <h2 id="score">0</h2>
-            </header>
-            <p id="question">Question 1: Lorem Ipsum</p>
-            <div class="quiz-button-container">
-                <input class="quiz-button" id="answer-btn-1" type="button" value="Answer 1">
-                <input class="quiz-button" id="answer-btn-2" type="button" value="Answer 2">
-                <input class="quiz-button" id="answer-btn-3" type="button" value="Answer 3">
-                <input class="quiz-button" id="answer-btn-4" type="button" value="Answer 4">
+        <main>
+            <div id="content" class="quiz">
+                <header>
+                    <h2 id="score">0</h2>
+                </header>
+                <p id="question">Question 1: Lorem Ipsum</p>
+                <div class="quiz-button-container">
+                    <input class="quiz-button" id="answer-btn-1" type="button" value="Answer 1">
+                    <input class="quiz-button" id="answer-btn-2" type="button" value="Answer 2">
+                    <input class="quiz-button" id="answer-btn-3" type="button" value="Answer 3">
+                    <input class="quiz-button" id="answer-btn-4" type="button" value="Answer 4">
+                </div>
+                <div id="quiz-heart-container">
+                    <i class="fa-solid fa-heart quiz-heart" id="heart-1"></i>
+                    <i class="fa-solid fa-heart quiz-heart" id="heart-2"></i>
+                    <i class="fa-solid fa-heart quiz-heart" id="heart-3"></i>
+                </div>
             </div>
-            <div id="quiz-heart-container">
-                <i class="fa-solid fa-heart quiz-heart" id="heart-1"></i>
-                <i class="fa-solid fa-heart quiz-heart" id="heart-2"></i>
-                <i class="fa-solid fa-heart quiz-heart" id="heart-3"></i>
+            <div id="end">
+                <header>
+                    <h2 id="final-score">0</h2>
+                </header>
+                <p>Your final score</p>
+                <div class="quiz-button-container">
+                    <input class="quiz-button" id="retry-btn" type="button" value="Try Again">
+                    <input class="quiz-button" id="next-btn" type="button" value="View Scores">
+                </div>
             </div>
         </main>
         <script src="quiz.js"></script>

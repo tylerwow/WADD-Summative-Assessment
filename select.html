@@ -22,7 +22,7 @@
         <header>
             <h2>Select Your Quiz!</h2>
         </header>
-        <form>
+        <form id="form">
             <div class="form-group">
                 <label for="form-name">Name:</label>
                 <input id="form-name" name="name" type="text">
@@ -58,15 +58,15 @@
                     <option value="32">Entertainment: Cartoon and Animations</option>
                 </select>
             </div>
-            <fieldset>
-                <legend>Select Difficulty:</legend>
+            <legend>Select Difficulty:</legend>
+            <div class="field-set">
                 <input id="form-radio-easy" name="difficulty" type="radio" value="easy">
                 <label for="form-radio-easy">Easy</label>
                 <input id="form-radio-medium" name="difficulty" type="radio" value="medium" checked>
                 <label for="form-radio-medium">Medium</label>
                 <input id="form-radio-hard" name="difficulty" type="radio" value="hard">
                 <label for="form-radio-hard">Hard</label>
-            </fieldset>
+            </div>
             <div class="form-group">
                 <input class="button" id="form-submit-btn" type="button" value="Play">
             </div>
