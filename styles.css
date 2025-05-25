@@ -29,6 +29,17 @@ header h2 {
     margin-bottom: 1rem;
 }
 
+header h3 {
+    margin: 0;
+    color: rgb(248, 248, 248);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    padding-top: 3vh;
+    margin-bottom: 2rem;
+}
 
 form {
     display: inline-block;
@@ -140,6 +151,13 @@ legend {
     margin: .5rem;
 }
 
+#reset-btn {
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
 .button:hover {
     cursor: pointer;
     background-color: rgb(23, 23, 23);
@@ -156,6 +174,14 @@ legend {
 
 .quiz-button:active {
     background-color: rgb(33, 33, 33);
+}
+
+#final-reset-btn:hover {
+    background-color: rgb(122, 0, 0);
+}
+
+#final-reset-btn:active {
+    background-color: rgb(76, 0, 0);
 }
 
 #content {
@@ -204,13 +230,15 @@ i.quiz-heart {
 
 #data {
     display: flex;
-    width: 100%;
+    flex-direction: column;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
     justify-content: center;
 }
 
-table {
-    min-width: 50vw;
-    padding-bottom: 5rem;
+table {  
+    padding-bottom: 2rem;
 }
 
 th, td {
@@ -223,6 +251,15 @@ th {
 }
 
 #missing-data-message {
+    text-align: center;
+}
+
+#confirmation {
+    display: flex;
+    flex-direction: column;
+}
+
+#confirmation-message {
     text-align: center;
 }
 

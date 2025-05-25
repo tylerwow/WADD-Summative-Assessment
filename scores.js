@@ -6,42 +6,75 @@ const categories = ["Any Category", "General Knowledge", "Entertainment: Books",
     "Entertainment: Cartoon and Animations"
 ];
 
-if (scores !== null) {
-    document.getElementById("data").style.display = "flex";
-    document.getElementById("missing-data").style.display ="none";
+const resetBtn = document.getElementById("reset-btn");
+const finalResetBtn = document.getElementById("final-reset-btn");
+const backBtn = document.getElementById("back-btn");
 
-    const table = document.getElementById("scores");
-    for (const score of scores) {
-        const newRow = document.createElement("tr");
+document.getElementById("confirmation").style.display ="none";
 
-        const nameCol = document.createElement("td");
-        nameCol.innerText = score.name;
-        newRow.appendChild(nameCol);
+function displayScores() {
+    if (scores !== null) {
+        document.getElementById("data").style.display = "flex";
+        document.getElementById("missing-data").style.display ="none";
 
-        const categoryCol = document.createElement("td");
-        if (score.category === "") {
-            categoryCol.innerText = categories[0];
+        const table = document.getElementById("scores");
+        for (const score of scores) {
+            const newRow = document.createElement("tr");
+
+            const attemptCol = document.createElement("td");
+            attemptCol.innerText = scores.indexOf(score) + 1;
+            newRow.appendChild(attemptCol);
+
+            const nameCol = document.createElement("td");
+            nameCol.innerText = score.name;
+            newRow.appendChild(nameCol);
+
+            const categoryCol = document.createElement("td");
+            if (score.category === "") {
+                categoryCol.innerText = categories[0];
+            }
+            else {
+                categoryCol.innerText = categories[score.category - 8];
+            }
+            newRow.appendChild(categoryCol);
+
+            const difficultyCol = document.createElement("td");
+            difficultyCol.innerText = score.difficulty[0].toUpperCase() + score.difficulty.slice(1);
+            newRow.appendChild(difficultyCol);
+
+            const scoreCol = document.createElement("td");
+            scoreCol.innerText = score.score;
+            newRow.appendChild(scoreCol);
+
+            const outcome = document.createElement("td");
+
+            newRow.appendChild(outcome);
+            table.appendChild(newRow);
         }
-        else {
-            categoryCol.innerText = categories[score.category - 8];
-        }
-        newRow.appendChild(categoryCol);
-
-        const difficultyCol = document.createElement("td");
-        difficultyCol.innerText = score.difficulty[0].toUpperCase() + score.difficulty.slice(1);
-        newRow.appendChild(difficultyCol);
-
-        const scoreCol = document.createElement("td");
-        scoreCol.innerText = score.score;
-        newRow.appendChild(scoreCol);
-
-        const outcome = document.createElement("td");
-
-        newRow.appendChild(outcome);
-        table.appendChild(newRow);
+    }
+    else {
+        document.getElementById("data").style.display = "none";
+        document.getElementById("missing-data").style.display ="inline";
     }
 }
-else {
-    document.getElementById("data").style.display = "none";
-    document.getElementById("missing-data").style.display ="inline";
+
+function viewConfirmation() {
+    document.getElementById("data").style.display ="none";
+    document.getElementById("confirmation").style.display ="flex";
 }
+
+function viewScores() {
+    document.getElementById("data").style.display ="flex";
+    document.getElementById("confirmation").style.display ="none";
+}
+
+function resetScores() {
+    localStorage.removeItem("quizScores");
+    location.href = "scores.html";
+}
+
+displayScores();
+
+resetBtn.addEventListener("click", viewConfirmation);
+backBtn.addEventListener("click", viewScores);
+finalResetBtn.addEventListener("click", resetScores);

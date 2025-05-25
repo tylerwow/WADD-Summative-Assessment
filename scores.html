@@ -27,6 +27,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <th>Attempt</th>
                             <th>Name</th>
                             <th>Category</th>
                             <th>Difficulty</th>
@@ -36,11 +37,21 @@
                     <tbody id="scores">
                     </tbody>
                 </table>
+                <div class="button-container">
+                    <input class="quiz-button" id="reset-btn" type="button" value="Reset">
+                </div>
             </div>
             <div id="missing-data">
                 <p id="missing-data-message">There are currently no scores to show right now.</p>
                 <div class="button-container">
                     <a href="select.html" class="button">Select a Quiz</a>
+                </div>
+            </div>
+            <div id="confirmation">
+                <p id="confirmation-message">Are you sure? This action cannot be undone.</p>
+                <div class="quiz-button-container">
+                    <input class="quiz-button" id="back-btn" type="button" value="Go Back">
+                    <input class="quiz-button" id="final-reset-btn" type="button" value="Reset">
                 </div>
             </div>
         </main>
