@@ -45,17 +45,20 @@ function callApi() {
 
     fetch(generateApiUrl(category, difficulty))
         .then(function (result) {
-            if (result.status == 429) {
+            if (result.status === 200) {
+                return result.json();
+            }
+            else if (result.status === 429) {
                 setTimeout(() => {
                     callApi();
                 }, 5000);
             }
             else {
-                return result.json();
+                getBackupData();
             }
         })
         .then(function (data) {
-            jsonQuestions = data
+            jsonQuestions = data;
             refreshQuestion();
 
             document.getElementById("loading").style.display = "none";
@@ -63,8 +66,25 @@ function callApi() {
         })
         .catch(function (error) {
             loadingMsg.innerHTML = "This may take longer than expected...";
-            console.log(error)
+            console.log(error);
         });
+}
+
+function getBackupData() {
+    document.getElementById("loading").style.display = "flex";
+    document.getElementById("content").style.display = "none";
+
+    fetch("backup.json")
+        .then(function(result) {
+            return result.json()
+        })
+        .then(function(data) {
+            jsonQuestions = data;
+            refreshQuestion();
+
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("content").style.display = "inline-block";
+        })
 }
 
 function updateQuestion(data) {
@@ -238,6 +258,7 @@ function nextPage() {
 }
 
 callApi();
+//getBackupData();
 
 answerBtn1.addEventListener("click", () => checkAnswer(answerBtn1));
 answerBtn2.addEventListener("click", () => checkAnswer(answerBtn2));
