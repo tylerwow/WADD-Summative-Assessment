@@ -42,4 +42,14 @@
         text-align: left;
         list-style: none;
     }
+
+    #nav-container-mobile-open ul {
+        display: inline-block;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .spinner, .quiz-heart {
+        animation: none;
+    }
 }
