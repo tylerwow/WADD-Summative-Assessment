@@ -1,0 +1,45 @@
+@media (max-width: 800px) {
+    header h1 {
+        padding-top: 20vh;
+        font-size: 4rem;
+    }
+
+    header h2 {
+        padding-top: 10vh;
+    }
+
+    form {
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    .quiz-button-container {
+        grid-template-columns: 1fr;
+    }
+
+    #data {
+        width: 100%;
+        margin-left: 0%;
+        margin-right: 0%;
+        justify-content: center;
+    }
+
+    /* Navigation */
+    .nav-container {
+        display: none;
+    }
+
+    .nav-container-mobile {
+        display: flex;
+        justify-content: space-between;
+        background-color: rgb(18, 18, 18);
+    }
+
+    #nav-container-mobile-open {
+        background-color: rgb(23, 23, 23);
+        display: none;
+        width: 100%;
+        text-align: left;
+        list-style: none;
+    }
+}

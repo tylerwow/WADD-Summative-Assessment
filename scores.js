@@ -21,10 +21,6 @@ function displayScores() {
         for (const score of scores) {
             const newRow = document.createElement("tr");
 
-            const attemptCol = document.createElement("td");
-            attemptCol.innerText = scores.indexOf(score) + 1;
-            newRow.appendChild(attemptCol);
-
             const nameCol = document.createElement("td");
             nameCol.innerText = score.name;
             newRow.appendChild(nameCol);
@@ -46,9 +42,6 @@ function displayScores() {
             scoreCol.innerText = score.score;
             newRow.appendChild(scoreCol);
 
-            const outcome = document.createElement("td");
-
-            newRow.appendChild(outcome);
             table.appendChild(newRow);
         }
     }

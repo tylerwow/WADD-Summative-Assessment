@@ -1,21 +1,16 @@
-const scores = JSON.parse(localStorage.getItem("quizScores"));
-const highScoreOutput = document.getElementById("high-score");
+let isNavOpen = false;
 
-function displayHighScore() {
-    let highScore = 0;
+const navContainerOpen = document.getElementById("nav-container-mobile-open");
 
-    if (scores !== null) {
-        for (const score of scores) {
-            if (highScore < score.score) {
-                highScore = score.score;
-            }
-        }
-
-        highScoreOutput.innerHTML = "High Score: " + highScore;
+function manageNavMobile() {
+    isNavOpen = !isNavOpen;
+    
+    if (isNavOpen) {
+        navContainerOpen.style.display = "inline-block";
     }
     else {
-        highScoreOutput.innerHTML = "Get a high score!";
+        navContainerOpen.style.display = "none";
     }
 }
 
-displayHighScore();
+document.getElementById("menu-button").addEventListener("click", manageNavMobile)
