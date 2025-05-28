@@ -1,4 +1,6 @@
 const scores = JSON.parse(localStorage.getItem("quizScores"));
+
+// Array to decipher stored category
 const categories = ["Any Category", "General Knowledge", "Entertainment: Books", "Entertainment: Film", "Entertainment: Music",
     "Entertainment: Musicals and Theaters", "Entertainment: Television", "Entertainment: Video Games", "Entertainment: Board Games",
     "Science and Nature", "Science: Computers", "Science: Mathematics", "Mythology", "Sports", "Geography", "History", "Politics",
@@ -6,6 +8,7 @@ const categories = ["Any Category", "General Knowledge", "Entertainment: Books",
     "Entertainment: Cartoon and Animations"
 ];
 
+// HTML elements
 const resetBtn = document.getElementById("reset-btn");
 const finalResetBtn = document.getElementById("final-reset-btn");
 const backBtn = document.getElementById("back-btn");
@@ -24,10 +27,12 @@ function displayScores() {
         for (const score of scores) {
             const newRow = document.createElement("tr");
 
+            // Name column
             const nameCol = document.createElement("td");
             nameCol.innerText = score.name;
             newRow.appendChild(nameCol);
 
+            // Category column
             const categoryCol = document.createElement("td");
             if (score.category === "") {
                 categoryCol.innerText = categories[0];
@@ -37,10 +42,12 @@ function displayScores() {
             }
             newRow.appendChild(categoryCol);
 
+            // Difficulty column
             const difficultyCol = document.createElement("td");
             difficultyCol.innerText = score.difficulty[0].toUpperCase() + score.difficulty.slice(1);
             newRow.appendChild(difficultyCol);
 
+            // Score column
             const scoreCol = document.createElement("td");
             scoreCol.innerText = score.score;
             newRow.appendChild(scoreCol);

@@ -1,3 +1,4 @@
+// API results
 let jsonQuestions;
 let question;
 let correctAnswer;
@@ -6,12 +7,14 @@ let incorrectAnswer2;
 let incorrectAnswer3;
 let answers = [];
 
+// Gameplay variables
 let questionNum = 1;
 let score = 0;
 let lives = 3;
 
 let hasAnswered = false;
 
+// HTML elements
 let category = sessionStorage.getItem("quizCategory");
 let difficulty = sessionStorage.getItem("quizDifficulty");
 
@@ -54,15 +57,15 @@ function callApi() {
 
     fetch(generateApiUrl(category, difficulty))
         .then(function (result) {
-            if (result.status === 200) {
+            if (result.status === 200) { // Success
                 return result.json();
             }
-            else if (result.status === 429) {
+            else if (result.status === 429) { // Too many requests
                 setTimeout(() => {
                     callApi();
                 }, 5000);
             }
-            else {
+            else { // Other error
                 getBackupData();
             }
         })
