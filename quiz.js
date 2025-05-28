@@ -35,10 +35,19 @@ const loadingMsg = document.getElementById("loading-msg");
 
 document.getElementById("end").style.display = "none";
 
+/**
+ * Generates an API URL based on the selected category and difficulty
+ * @param {string} category User's selected category
+ * @param {string} difficulty User's selected difficulty
+ * @returns {string} An API URL
+ */
 function generateApiUrl(category, difficulty) {
     return apiUrl = "https://opentdb.com/api.php?amount=10&category=" + category + "&difficulty="+ difficulty + "&type=multiple";
 }
 
+/**
+ * Fetches data from API
+ */
 function callApi() {
     document.getElementById("loading").style.display = "flex";
     document.getElementById("content").style.display = "none";
@@ -70,6 +79,9 @@ function callApi() {
         });
 }
 
+/**
+ * Fetches backup data in case of API outage
+ */
 function getBackupData() {
     document.getElementById("loading").style.display = "flex";
     document.getElementById("content").style.display = "none";
@@ -87,6 +99,10 @@ function getBackupData() {
         })
 }
 
+/**
+ * Updates variables based on current question number
+ * @param {json} data API data in JSON
+ */
 function updateQuestion(data) {
     answers = [];
 
@@ -98,6 +114,9 @@ function updateQuestion(data) {
     answers.push(correctAnswer, incorrectAnswer1, incorrectAnswer2, incorrectAnswer3);
 }
 
+/**
+ * Shuffles the answers so that it randomly displays on buttons
+ */
 function shuffleAnswers() {
     /*
     This code is based upon an example from a stack overflow answer
@@ -116,18 +135,26 @@ function shuffleAnswers() {
     
 }
 
-/*
-This function is based upon an example from a stack overflow answer
-Author: Rob W
-Location: https://stackoverflow.com/questions/7394748/whats-the-right-way-to-decode-a-string-that-has-special-html-entities-in-it?lq=1
-Accessed: 23/05/2025
-*/
+/**
+ * Removes HTML character encoding from string
+ * @param {string} html Encoded string
+ * @returns {string} Decoded string
+ */
 function decodeHtml(html) {
+    /*
+    This function is based upon an example from a stack overflow answer
+    Author: Rob W
+    Location: https://stackoverflow.com/questions/7394748/whats-the-right-way-to-decode-a-string-that-has-special-html-entities-in-it?lq=1
+    Accessed: 23/05/2025
+    */
     var txt = document.createElement("textarea");
     txt.innerHTML = html;
     return txt.value;
 }
 
+/**
+ * Updates question and answers text and heart appearance
+ */
 function updateOutput() {
     scoreOutput.innerHTML = score;
     questionOutput.innerHTML = question;
@@ -147,6 +174,9 @@ function updateOutput() {
     }
 }
 
+/**
+ * Refreshes questions, recalls API if questions are above 10
+ */
 function refreshQuestion() {
     if (questionNum > 10) {
         questionNum = 1;
@@ -159,6 +189,10 @@ function refreshQuestion() {
     }
 }
 
+/**
+ * Checks if selected button is correct, updates button colours and plays heart animation if incorrect
+ * @param {string} button Button pressed
+ */
 function checkAnswer(button) {
 
     if (!hasAnswered) {
@@ -228,6 +262,9 @@ function checkAnswer(button) {
     }
 }
 
+/**
+ * Saves score to local storage when quiz is complete
+ */
 function saveScore() {
     let scoreLog = [];
 
@@ -249,17 +286,23 @@ function saveScore() {
     document.getElementById("content").style.display = "none";
 }
 
+/**
+ * Refreshes page
+ */
 function refreshPage() {
     location.href = "quiz.html";
 }
 
+/**
+ * Proceed to score page
+ */
 function nextPage() {
     location.href = "scores.html";
 }
 
 callApi();
-//getBackupData();
 
+// Event listeners
 answerBtn1.addEventListener("click", () => checkAnswer(answerBtn1));
 answerBtn2.addEventListener("click", () => checkAnswer(answerBtn2));
 answerBtn3.addEventListener("click", () => checkAnswer(answerBtn3));

@@ -2,6 +2,9 @@ let isNavOpen = false;
 
 const navContainerOpen = document.getElementById("nav-container-mobile-open");
 
+/**
+ * Opens and closes the mobile navigation bar when the menu button is pressed
+ */
 function manageNavMobile() {
     isNavOpen = !isNavOpen;
     
@@ -13,4 +16,5 @@ function manageNavMobile() {
     }
 }
 
+// Event Listeners
 document.getElementById("menu-button").addEventListener("click", manageNavMobile)

@@ -1,6 +1,9 @@
 const scores = JSON.parse(localStorage.getItem("quizScores"));
 const highScoreOutput = document.getElementById("high-score");
 
+/**
+ * Displays high score on the main menu
+ */
 function displayHighScore() {
     let highScore = 0;
 

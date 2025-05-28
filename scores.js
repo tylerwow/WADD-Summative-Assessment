@@ -12,6 +12,9 @@ const backBtn = document.getElementById("back-btn");
 
 document.getElementById("confirmation").style.display ="none";
 
+/**
+ * Displays table by pulling result from local storage
+ */
 function displayScores() {
     if (scores !== null) {
         document.getElementById("data").style.display = "flex";
@@ -51,16 +54,25 @@ function displayScores() {
     }
 }
 
+/**
+ * Shows confirmation buttons
+ */
 function viewConfirmation() {
     document.getElementById("data").style.display ="none";
     document.getElementById("confirmation").style.display ="flex";
 }
 
+/**
+ * Shows table
+ */
 function viewScores() {
     document.getElementById("data").style.display ="flex";
     document.getElementById("confirmation").style.display ="none";
 }
 
+/**
+ * Clears results in local storage
+ */
 function resetScores() {
     localStorage.removeItem("quizScores");
     location.href = "scores.html";
@@ -68,6 +80,7 @@ function resetScores() {
 
 displayScores();
 
+// Event listeners
 resetBtn.addEventListener("click", viewConfirmation);
 backBtn.addEventListener("click", viewScores);
 finalResetBtn.addEventListener("click", resetScores);

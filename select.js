@@ -1,3 +1,9 @@
+const formSubmitBtn = document.getElementById("form-submit-btn");
+
+/**
+ * Checks if user has entered their name
+ * @returns {boolean} False if they have not entered their name, True otherwise
+ */
 function checkName() {
     if (document.getElementById("form-name").value == "") {
         document.getElementById("form-name-error").innerHTML = "You must enter your name.";
@@ -8,6 +14,9 @@ function checkName() {
     }
 }
 
+/**
+ * Saves inputted form data to session storage
+ */
 function saveFormData() {
     if (checkName()) {
         let formName = document.getElementById("form-name").value;
@@ -29,7 +38,7 @@ function saveFormData() {
     }
 }
 
-const formSubmitBtn = document.getElementById("form-submit-btn");
+// Event Listeners
 formSubmitBtn.addEventListener("click", saveFormData);
 
 /*
